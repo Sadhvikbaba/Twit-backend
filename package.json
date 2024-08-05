@@ -12,13 +12,13 @@
   },
   "keywords": [
     "javascript",
-    "backend",
-    "chai"
+    "backend"
   ],
   "author": "saiRam Hanuma",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^3.2.5"
+    "prettier": "^3.2.5",
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
