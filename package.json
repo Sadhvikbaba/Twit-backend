@@ -4,6 +4,9 @@
   "description": "a sample platform like youtube",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js"
   },

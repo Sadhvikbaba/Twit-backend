@@ -5,9 +5,7 @@ import cors from "cors";
 const app = express()
 
 app.use(cors({
-    origin: ['https://twit-frontend.vercel.app','http://localhost:5173'],
-    methods: 'GET, POST, PUT, DELETE, PATCH',
-    allowedHeaders: 'Content-Type',
+    origin: process.env.CORS_ORIGIN,
     credentials: true,
 }));
 
