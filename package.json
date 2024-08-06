@@ -18,11 +18,12 @@
   "author": "saiRam Hanuma",
   "license": "ISC",
   "devDependencies": {
-    "prettier": "^3.2.5",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "prettier": "^3.2.5"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
     "cloudinary": "^2.2.0",
     "cloudinary-build-url": "^0.2.4",
     "cookie-parser": "^1.4.6",
