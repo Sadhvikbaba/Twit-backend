@@ -3,7 +3,7 @@ import {Video} from "../models/video.models.js"
 import {Like} from "../models/like.models.js";
 import {Playlist} from "../models/playlist.models.js"
 import { Comment } from "../models/comment.models.js"
-import {User} from "../models/user.models.js"
+import {User} from "../models/User.models.js"
 import {ApiError} from "../utils/ApiError.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import {asyncHandler} from "../utils/asyncHandler.js"
