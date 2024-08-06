@@ -112,8 +112,8 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(userDetails._id).select("-password -refreshToken -OTP");
 
-    const accessTokenOptions = { httpOnly: true, secure: true, sameSite: 'Strict' };
-    const refreshTokenOptions = { httpOnly: true, secure: true, sameSite: 'Strict' };
+    const accessTokenOptions = { httpOnly: true, secure: true, sameSite: 'None' };
+    const refreshTokenOptions = { httpOnly: true, secure: true, sameSite: 'None' };
 
     res.cookie("refreshToken", refreshToken, refreshTokenOptions);
     res.cookie("accessToken", accessToken, accessTokenOptions);
