@@ -213,7 +213,7 @@ const updateVideo = asyncHandler(async (req, res) => {
     const {title , description}= req.body
     const file = req.file?.path || null
 
-    let video = Video.findById(videoId);
+    let video = await Video.findById(videoId);
     
     if(video.owner.toString() != owner.toString()) throw new ApiError(400 , "unauthorized")
 
