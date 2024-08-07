@@ -212,7 +212,7 @@ const updateVideo = asyncHandler(async (req, res) => {
     
     const {title , description}= req.body
     const file = req.file?.path:null ;
-  res.json(req.file)
+  return res.status(200).json(req.file)
 
     let video = await Video.findById(videoId);
     
