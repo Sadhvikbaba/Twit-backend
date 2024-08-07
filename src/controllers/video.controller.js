@@ -219,7 +219,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 
     let thumbnail = null;
     if(file){
-      thumbnail = await uploadOnCloudinary(${file});
+      thumbnail = await uploadOnCloudinary(file);
 
       if(thumbnail) await deleteFileByUrl(video.thumbnail);
 
