@@ -54,12 +54,12 @@ const registerUser = asyncHandler( async (req , res) => {
 
     let avatarLocalPath = null;
     if(req.files && Array.isArray(req.files.avatar) && req.files.avatar.length > 0){
-        avatarLocalPath = `/tmp/${req.files.avatar[0].path}`;
+        avatarLocalPath = req.files.avatar[0].path;
     }
 
     let coverImageLocalPath = null;
     if(req.files && Array.isArray(req.files.coverImage) && req.files.coverImage.length > 0){
-        coverImageLocalPath = `/tmp/${req.files.coverImage[0].path}`;
+        coverImageLocalPath = req.files.coverImage[0].path;
     }
 
     const avatar = await uploadOnCloudinary(avatarLocalPath);
@@ -196,7 +196,7 @@ const updateUserAvatar = asyncHandler(async (req , res) =>{
 
     if(!avatarLocalPath) throw new ApiError(400 , "avatar file is missing")
 
-    const avatar = await uploadOnCloudinary(`/tmp/${avatarLocalPath}`)
+    const avatar = await uploadOnCloudinary(avatarLocalPath)
 
     if(!avatar.url) throw new ApiError(500 , "Error while uploading on avatar");
 
@@ -216,7 +216,7 @@ const updateUserCoverImage = asyncHandler(async (req , res) =>{
 
     if(!coverImageLocalPath) throw new ApiError(400 , "coverImage file is missing")
 
-    const coverImage = await uploadOnCloudinary(`/tmp/${coverImageLocalPath}`)
+    const coverImage = await uploadOnCloudinary(coverImageLocalPath)
 
     if(!coverImage.url) throw new ApiError(500 , "Error while uploading on coverImage");
 
