@@ -212,7 +212,6 @@ const updateVideo = asyncHandler(async (req, res) => {
     
     const {title , description}= req.body
     const file = req.file?.path || null ;
-    return res.status(200).json(req.file)
 
     let video = await Video.findById(videoId);
     
@@ -220,7 +219,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 
     let thumbnail = null;
     if(file){
-      thumbnail = await uploadOnCloudinary(`/tmp/${file}`);
+      thumbnail = await uploadOnCloudinary(${file});
 
       if(thumbnail) await deleteFileByUrl(video.thumbnail);
 
