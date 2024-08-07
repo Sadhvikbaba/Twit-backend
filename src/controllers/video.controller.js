@@ -80,12 +80,12 @@ const publishAVideo = asyncHandler(async (req, res) => {
 
     let videoFileLocalPath = null;
     if(req.files && Array.isArray(req.files.videoFile) && req.files.videoFile.length > 0){
-        videoFileLocalPath = req.files.videoFile[0].path;
+        videoFileLocalPath = `/tmp/${req.files.videoFile[0].path}`;
     }
     
     let thumbnailLocalPath = null;
     if(req.files && Array.isArray(req.files.thumbnail) && req.files.thumbnail.length > 0){
-        thumbnailLocalPath = req.files.thumbnail[0].path;
+        thumbnailLocalPath = `/tmp/${req.files.thumbnail[0].path}`;
     }
 
     if(!videoFileLocalPath) throw new ApiError(401 , "video is required") ;
@@ -219,7 +219,7 @@ const updateVideo = asyncHandler(async (req, res) => {
 
     let thumbnail = null;
     if(file){
-      thumbnail = await uploadOnCloudinary(file);
+      thumbnail = await uploadOnCloudinary(`/tmp/${file}`);
 
       if(thumbnail) await deleteFileByUrl(video.thumbnail);
 
