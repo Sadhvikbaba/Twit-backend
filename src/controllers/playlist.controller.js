@@ -27,6 +27,8 @@ const createPlaylist = asyncHandler(async (req, res) => {
 
 const getUserPlaylists = asyncHandler(async (req, res) => {
     let {userId} = req.params
+
+    if(!userId) throw new ApiError(400 , "bad request");
     
     const playlists = await Playlist.aggregate([
         {$match : {owner : new mongoose.Types.ObjectId(userId)}},
