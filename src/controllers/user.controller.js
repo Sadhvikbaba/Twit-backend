@@ -112,8 +112,8 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(userDetails._id).select("-password -refreshToken -OTP");
 
-    const accessTokenOptions = { httpOnly: true, secure: true, sameSite: 'None' };
-    const refreshTokenOptions = { httpOnly: true, secure: true, sameSite: 'None' };
+    const accessTokenOptions = { httpOnly: true, secure: true, sameSite: 'None', domain: '.vercel.app' };
+    const refreshTokenOptions = { httpOnly: true, secure: true, sameSite: 'None', domain: '.vercel.app' };
 
     res.cookie("refreshToken", refreshToken, refreshTokenOptions);
     res.cookie("accessToken", accessToken, accessTokenOptions);
@@ -148,7 +148,7 @@ const refreshAccesstoken = asyncHandler( async(req , res) =>{
     
         if(user.refreshToken != token) throw new ApiError(401 , "refresh token is expired");
     
-        const options = {httpOnly : true , secure : true };
+        const options = { httpOnly: true, secure: true, sameSite: 'None', domain: '.vercel.app' };
     
         const {accessToken , refreshToken} = await generateAccessAndRefreshToken(user._id)
     
